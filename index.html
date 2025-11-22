@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>FindDesign - Seu Hub de Recursos Criativos</title>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module"></script>
+</head>
+<body>
+    <section id="hero-section">
+        <div class="intro-icon">
+            <dotlottie-wc src="https://lottie.host/660f6f17-0fce-4474-94f8-805caa9c5fcf/qO7enYs2K1.lottie" style="width: 300px;height: 300px" autoplay loop></dotlottie-wc>
+        </div>
+        <h1>FIND<span class="purple-design">DESIGN</span></h1>
+        <p class="subtitle">Seu hub central para encontrar os melhores recursos de design na web.</p>
+        <div class="controls-container">
+            <div class="search-group">
+                <div class="input-wrapper">
+                    <input type="text" id="searchInput" placeholder="Buscar por nome, descrição ou categoria..." autocomplete="off">
+                    <button id="clearSearchButton" class="clear-search-btn" title="Limpar busca">✕</button>
+                    <button id="searchButton">Buscar</button>
+                    <div id="suggestionsContainer" class="suggestions-container"></div>
+                </div>
+            </div>
+            <nav class="filter-container" id="filterContainer">
+                <!-- Botões de filtro serão inseridos aqui -->
+            </nav>
+        </div>
+    </section>
+
+    <main>
+
+        <!-- Container dos Cards -->
+        <section class="card-container" id="cardContainer">
+            <!-- Cards de recursos serão inseridos aqui pelo JavaScript -->
+        </section>
+        <div class="no-results" style="display: none; text-align: center; margin-top: 2rem;">
+            <p>Nenhum resultado encontrado para sua busca.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Criado com ♡. Powered by Alura.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

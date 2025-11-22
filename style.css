@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+    --background-dark: #121212;
+    --surface-dark: #1E1E1E;
+    --primary-accent: #BB86FC;
+    --primary-accent-dark: #A162F7;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+    --border-color: #2a2a2a;
+}
+
+body {
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; /* Adjust as needed */
+    padding: 1rem;
+    text-align: center;
+}
+
+#hero-section .intro-icon {
+    margin-bottom: 1rem;
+    color: var(--primary-accent);
+    display: flex;
+    justify-content: center;
+    /* Adjust Lottie size for the hero section */
+}
+
+#hero-section .intro-icon dotlottie-wc {
+    width: 200px !important; /* Smaller size */
+    height: 200px !important; /* Smaller size */
+}
+
+#hero-section h1 {
+    font-size: 2.5rem; /* Slightly larger for hero */
+    margin-bottom: 0.5rem;
+}
+
+.purple-design {
+    color: var(--primary-accent);
+}
+
+#hero-section .subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+#hero-section .controls-container {
+    margin-bottom: 0; /* No bottom margin needed here */
+    max-width: 700px; /* Constrain width */
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem 1.5rem; /* Keep some padding */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* --- Controles de Busca e Filtros --- */
+.controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--surface-dark);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    /* margin-bottom: 3rem;  This margin is now handled by hero-section */
+}
+
+.search-group { /* Correctly defined .search-group */
+    display: flex;
+    flex-grow: 1; /* Make search group fill available width */
+    position: relative; /* Adicionado para posicionamento das sugestões */
+    align-items: center; /* Added for vertical alignment */
+}
+
+/* New: input-wrapper */
+.input-wrapper {
+    position: relative; /* For absolute positioning of clear button and suggestions */
+    flex-grow: 1; /* Allows it to take available space */
+    min-width: 300px; /* Inherit from original search-group */
+    display: flex; /* Aligns input and button horizontally */
+}
+
+/* --- Estilos das Sugestões de Busca --- */
+.suggestions-container {
+    position: absolute;
+    top: 100%; /* Abaixo do input */
+    left: 0;
+    right: 0;
+    background-color: var(--surface-dark);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+    max-height: 200px; /* Limita a altura e adiciona scroll */
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-item {
+    padding: 0.8rem 1.2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Separador sutil */
+}
+
+.suggestion-item:last-child {
+    border-bottom: none; /* Remove a borda do último item */
+}
+
+.suggestion-item:hover {
+    background-color: #2c2c2c; /* Fundo mais claro ao passar o mouse */
+    color: var(--primary-accent);
+}
+
+
+.clear-search-btn {
+    position: absolute; /* Position it relative to .input-wrapper */
+    right: 7.5rem; /* Adjust as needed to be left of the search button */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Fine-tune vertical centering */
+    background-color: transparent;
+    color: var(--text-primary); /* White text */
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    transition: color 0.3s ease;
+    z-index: 2; /* Ensure it's above the input */
+    display: none; /* Hidden by default */
+}
+
+.clear-search-btn:hover {
+    color: var(--primary-accent);
+}
+
+#searchInput {
+    flex-grow: 1;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-right: none;
+    border-radius: 20px 0 0 20px;
+    padding: 0.75rem 1.2rem; /* Original padding */
+    padding-right: 3rem; /* Make space for the clear button */
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#searchInput::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+#searchInput:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 8px rgba(187, 134, 252, 0.15);
+}
+
+#searchButton {
+    background-color: var(--primary-accent);
+    color: var(--background-dark);
+    border: 1px solid var(--primary-accent);
+    border-radius: 0 20px 20px 0;
+    padding: 0.75rem 1.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: var(--primary-accent-dark);
+    border-color: var(--primary-accent-dark);
+}
+
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0; /* Removido para alinhar dentro do container */
+}
+
+.filter-btn {
+    background-color: var(--surface-dark);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.6rem 1.2rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #2c2c2c;
+    color: var(--text-primary);
+    border-color: #444;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-accent);
+    color: var(--background-dark);
+    font-weight: 700;
+    border-color: var(--primary-accent);
+}
+
+.no-results {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* --- Estilos dos Cards --- */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--surface-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-accent-dark);
+    box-shadow: 0 8px 24px rgba(187, 134, 252, 0.1);
+}
+
+.card h2 {
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.card .card-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.pricing-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+}
+
+.pricing-tag.gratuito {
+    background-color: #2E7D32; /* Verde escuro */
+    color: #E8F5E9;
+}
+.pricing-tag.pago {
+    background-color: #C62828; /* Vermelho escuro */
+    color: #FFEBEE;
+}
+.pricing-tag.misto {
+    background-color: #FF8F00; /* Âmbar */
+    color: #FFF8E1;
+}
+
+.card-link {
+    color: var(--primary-accent);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover {
+    color: var(--primary-accent-dark);
+    text-decoration: underline;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    main {
+        padding: 1.5rem 1rem;
+    }
+    .filter-container {
+        gap: 0.5rem;
+    }
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
